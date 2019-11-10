@@ -1,20 +1,24 @@
 {
-    "todos" : [
-        {
-            "id": 1,
-            "text": "Begin to learn React"
-        },
-        {
-            "id": 2,
-            "text": "Learn React"
-        },
-        {
-            "id": 3,
-            "text": "Learn React more"
-        },
-        {
-            "id": 4,
-            "text": "Learn React much more"
-        }
-    ]
+  "todos": [
+    {
+      "id": 1,
+      "text": "Begin to learn React",
+      "isDone": true
+    },
+    {
+      "id": 2,
+      "text": "Learn React",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "text": "Learn React more",
+      "isDone": true
+    },
+    {
+      "id": 4,
+      "text": "Learn React much more",
+      "isDone": false
+    }
+  ]
 }

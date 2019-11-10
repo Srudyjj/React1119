@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.6",
     "json-server": "^0.15.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -13,7 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "db" : "json-server --watch db/db.json --port 3004"
+    "db": "json-server --watch db/db.json --port 3004"
   },
   "eslintConfig": {
     "extends": "react-app"
