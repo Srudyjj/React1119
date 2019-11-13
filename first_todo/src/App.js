@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // Styles
-import "./App.css";
+import './App.css';
 // Components
-import List from "./components/List/List";
-import TODOInput from "./components/TODOInput/TODOInput";
+import List from './components/List/List';
+import TODOInput from './components/TODOInput/TODOInput';
+
+import api from './api/api';
 
 function App() {
   const [state, setState] = useState({ list: [] });
 
-  const onSubmit = value => {
+  const onSubmit = async value => {
+    const res = await api.post('todos', { text: value, isDone: false });
     setState(prevState => {
-      return {
-        list: [...prevState.list, { id: 4, text: value, isDone: false }]
-      };
+      return { list: [...prevState.list, res.data] };
     });
   };
 
   useEffect(() => {
-    fetch("http://localhost:3004/todos")
-      .then(res => res.json())
-      .then(res => setState({ list: res }));
+    api.get('todos').then(res => setState({ list: res.data }));
   }, []);
 
   return (

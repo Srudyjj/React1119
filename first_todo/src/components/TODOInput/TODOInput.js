@@ -1,5 +1,5 @@
-import React from "react";
-import useInputValue from "../../hooks/useInputValue";
+import React from 'react';
+import useInputValue from '../../hooks/useInputValue';
 
 export default function TODOInput(props) {
   const { onSubmit } = props;
@@ -8,7 +8,7 @@ export default function TODOInput(props) {
   const internalOnSubmit = e => {
     e.preventDefault();
     onSubmit(e.target[0].value);
-    onChange({ target: { value: "" } });
+    onChange({ target: { value: '' } });
   };
 
   return (
