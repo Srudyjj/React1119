@@ -10,12 +10,49 @@ import api from './api/api';
 function App() {
   const [state, setState] = useState({ list: [] });
 
-  const onSubmit = async value => {
+  const onSubmit = async (value) => {
     const res = await api.post('todos', { text: value, isDone: false });
     setState(prevState => {
       return { list: [...prevState.list, res.data] };
     });
   };
+
+  const onChange = async (item) => {
+    const { id, text, isDone } = item;
+    try {
+      const res = await api.put(`todos/${id}`, { id, text, isDone });
+      setState(prevState => {
+        const list = prevState.list.map(item => {
+          if (item.id === id) {
+            item.text = res.data.text;
+            item.isDone = res.data.isDone;
+          }
+          return item;
+        })
+        return { list };
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const onRemove = async (id) => {
+    try {
+      await api.delete(`todos/${id}`);
+      setState(prevState => {
+        const list = prevState.list.filter(item => {
+          if (item.id === id) {
+            return false;
+          }
+          return item;
+        })
+        return { list };
+      });
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
     api.get('todos').then(res => setState({ list: res.data }));
@@ -24,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <TODOInput onSubmit={onSubmit} />
-      <List list={state.list} />
+      <List list={state.list} onChange={onChange} onRemove={onRemove} />
     </div>
   );
 }

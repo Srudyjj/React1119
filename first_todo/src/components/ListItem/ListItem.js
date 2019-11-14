@@ -3,15 +3,19 @@ import Checkbox from '../Checkobox/Checkbox';
 import RemoveButton from '../RemoveButton/RemoveButton';
 
 export default function ListItem(props) {
-  const { text, isDone } = props;
-  const onRemove = () => console.log('On Remove');
-  const onChange = () => console.log('On Change');
+  const { id, text, isDone, onChange, onRemove } = props;
+
+  const onClick = () => onRemove(id);
+  const onDone = e => {
+    const isDone = e.currentTarget.checked;
+    onChange({ id, text, isDone: isDone });
+  }
 
   return (
     <li>
-      <Checkbox isDone={isDone} onChange={onChange} />
+      <Checkbox isDone={isDone} onChange={onDone} />
       {text}
-      <RemoveButton onClick={onRemove} />
+      <RemoveButton onClick={onClick} />
     </li>
   );
 }
