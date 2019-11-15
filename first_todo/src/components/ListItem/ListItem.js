@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Checkbox from '../Checkobox/Checkbox';
 import RemoveButton from '../RemoveButton/RemoveButton';
 import EditButton from '../EditButton/EditButton';
