@@ -9,7 +9,7 @@ import api from './api/api';
 
 function App() {
   const [state, setState] = useState({ list: [] });
-  const [inputValue, setinputValue] = useState("");
+  const [inputItem, setInputItem] = useState({ id: 0, text: "", isDone: false });
 
   const onSubmit = async (value) => {
     const res = await api.post('todos', { text: value, isDone: false });
@@ -55,18 +55,14 @@ function App() {
     }
   }
 
-  const onEdit = (item) => {
-    setinputValue(item.text)
-  }
-
   useEffect(() => {
     api.get('todos').then(res => setState({ list: res.data }));
   }, []);
 
   return (
     <div className="App">
-      <TODOInput inputValue={inputValue} onSubmit={onSubmit} />
-      <List list={state.list} onChange={onChange} onRemove={onRemove} onEdit={onEdit} />
+      <TODOInput inputValue={inputItem.text} onSubmit={onSubmit} />
+      <List list={state.list} onChange={onChange} onRemove={onRemove} onEdit={setInputItem} />
     </div>
   );
 }
