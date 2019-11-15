@@ -4,7 +4,7 @@ import useInputValue from '../../hooks/useInputValue';
 export default function TODOInput(props) {
   const { inputItem, isEdit, onSubmit, onSave, onEditMode } = props;
   const { id, text, isDone } = inputItem;
-  const { value, onChange } = useInputValue(text);
+  const { value, onChange } = useInputValue(text, isEdit);
 
   const internalOnSubmit = e => {
     e.preventDefault();
@@ -34,8 +34,8 @@ export default function TODOInput(props) {
           <button onClick={onCancel}>Cancel</button>
         </>
       ) : (
-        <button type="submit">Add</button>
-      )}
+          <button type="submit">Add</button>
+        )}
     </form>
   );
 }
