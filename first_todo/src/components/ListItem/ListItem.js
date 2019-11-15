@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checkbox from '../Checkobox/Checkbox';
 import RemoveButton from '../RemoveButton/RemoveButton';
 import EditButton from '../EditButton/EditButton';
 
 export default function ListItem(props) {
-  const { id, text, isDone, onChange, onRemove, onEdit, onEditMode } = props;
+  const {
+    id,
+    text,
+    isDone,
+    isEdit,
+    onChange,
+    onRemove,
+    onEdit,
+    onEditMode
+  } = props;
 
   const onRemoveClick = () => onRemove(id);
   const onDone = e => {
@@ -20,8 +29,12 @@ export default function ListItem(props) {
     <li>
       <Checkbox isDone={isDone} onChange={onDone} />
       {text}
-      <RemoveButton onClick={onRemoveClick} />
-      <EditButton onClick={onEditClick} />
+      {!isEdit && (
+        <>
+          <RemoveButton onClick={onRemoveClick} />
+          <EditButton onClick={onEditClick} />
+        </>
+      )}
     </li>
   );
 }

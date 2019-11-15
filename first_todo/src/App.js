@@ -24,8 +24,6 @@ function App() {
     });
   };
 
-  const onSave = item => console.log(item);
-
   const onChange = async item => {
     const { id, text, isDone } = item;
     try {
@@ -72,13 +70,14 @@ function App() {
         inputItem={inputItem}
         isEdit={isEdit}
         onSubmit={onSubmit}
-        onSave={onSave}
+        onSave={onChange}
         onEditMode={setEditMode}
       />
       <List
         list={state.list}
         onChange={onChange}
         onRemove={onRemove}
+        isEdit={isEdit}
         onEdit={setInputItem}
         onEditMode={setEditMode}
       />

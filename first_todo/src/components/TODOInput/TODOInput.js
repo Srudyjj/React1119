@@ -16,12 +16,13 @@ export default function TODOInput(props) {
     e.preventDefault();
     onSave({ id, text: value, isDone });
     onChange({ target: { value: '' } });
+    onEditMode(false);
   };
 
   const onCancel = e => {
     e.preventDefault();
-    onEditMode(false);
     onChange({ target: { value: '' } });
+    onEditMode(false);
   };
 
   return (

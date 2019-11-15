@@ -2,13 +2,8 @@
   "todos": [
     {
       "id": 1,
-      "text": "Begin to learn React",
+      "text": "Begin to learn React!!!",
       "isDone": true
-    },
-    {
-      "id": 2,
-      "text": "Learn React",
-      "isDone": false
     },
     {
       "id": 3,
@@ -17,18 +12,8 @@
     },
     {
       "id": 4,
-      "text": "Learn React much more",
+      "text": "fdgsdfg",
       "isDone": false
-    },
-    {
-      "text": "1",
-      "isDone": false,
-      "id": 5
-    },
-    {
-      "text": "111",
-      "isDone": false,
-      "id": 6
     }
   ]
 }
