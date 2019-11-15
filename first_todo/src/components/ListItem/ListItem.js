@@ -4,16 +4,17 @@ import RemoveButton from '../RemoveButton/RemoveButton';
 import EditButton from '../EditButton/EditButton';
 
 export default function ListItem(props) {
-  const { id, text, isDone, onChange, onRemove, onEdit } = props;
+  const { id, text, isDone, onChange, onRemove, onEdit, onEditMode } = props;
 
   const onRemoveClick = () => onRemove(id);
   const onDone = e => {
     const isDone = e.currentTarget.checked;
     onChange({ id, text, isDone: isDone });
-  }
+  };
   const onEditClick = () => {
+    onEditMode(true);
     onEdit({ id, text, isDone });
-  }
+  };
 
   return (
     <li>

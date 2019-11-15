@@ -9,16 +9,24 @@ import api from './api/api';
 
 function App() {
   const [state, setState] = useState({ list: [] });
-  const [inputItem, setInputItem] = useState({ id: 0, text: "", isDone: false });
+  const [inputItem, setInputItem] = useState({
+    id: 0,
+    text: '',
+    isDone: false
+  });
 
-  const onSubmit = async (value) => {
+  const [isEdit, setEditMode] = useState(false);
+
+  const onSubmit = async value => {
     const res = await api.post('todos', { text: value, isDone: false });
     setState(prevState => {
       return { list: [...prevState.list, res.data] };
     });
   };
 
-  const onChange = async (item) => {
+  const onSave = item => console.log(item);
+
+  const onChange = async item => {
     const { id, text, isDone } = item;
     try {
       const res = await api.put(`todos/${id}`, { id, text, isDone });
@@ -29,15 +37,15 @@ function App() {
             item.isDone = res.data.isDone;
           }
           return item;
-        })
+        });
         return { list };
       });
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  const onRemove = async (id) => {
+  const onRemove = async id => {
     try {
       await api.delete(`todos/${id}`);
       setState(prevState => {
@@ -46,14 +54,13 @@ function App() {
             return false;
           }
           return item;
-        })
+        });
         return { list };
       });
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     api.get('todos').then(res => setState({ list: res.data }));
@@ -61,8 +68,20 @@ function App() {
 
   return (
     <div className="App">
-      <TODOInput inputValue={inputItem.text} onSubmit={onSubmit} />
-      <List list={state.list} onChange={onChange} onRemove={onRemove} onEdit={setInputItem} />
+      <TODOInput
+        inputItem={inputItem}
+        isEdit={isEdit}
+        onSubmit={onSubmit}
+        onSave={onSave}
+        onEditMode={setEditMode}
+      />
+      <List
+        list={state.list}
+        onChange={onChange}
+        onRemove={onRemove}
+        onEdit={setInputItem}
+        onEditMode={setEditMode}
+      />
     </div>
   );
 }
