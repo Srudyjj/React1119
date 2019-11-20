@@ -1,7 +1,20 @@
-import { GET_TODOS, ADD_TODO, EDIT_TODO, REMOVE_TODO } from './types';
+import {
+  GET_TODOS,
+  ADD_TODO,
+  EDIT_TODO,
+  REMOVE_TODO,
+  UPDATE_TODO,
+  TOGGLE_EDIT
+} from '../actions/types';
 
 const initialState = {
-  list: []
+  list: [],
+  currentEditItem: {
+    id: 0,
+    text: '',
+    isDone: false
+  },
+  isEdit: false
 };
 
 const actionMap = new Map([
@@ -18,7 +31,7 @@ const actionMap = new Map([
     }
   ],
   [
-    EDIT_TODO,
+    UPDATE_TODO,
     (state, payload) => {
       return {
         ...state,
@@ -29,11 +42,29 @@ const actionMap = new Map([
     }
   ],
   [
+    EDIT_TODO,
+    (state, payload) => {
+      return {
+        ...state,
+        currentEditItem: payload
+      };
+    }
+  ],
+  [
     REMOVE_TODO,
     (state, payload) => {
       return {
         ...state,
         list: state.list.filter(item => item.id !== payload.id)
+      };
+    }
+  ],
+  [
+    TOGGLE_EDIT,
+    (state, payload) => {
+      return {
+        ...state,
+        isEdit: payload
       };
     }
   ]

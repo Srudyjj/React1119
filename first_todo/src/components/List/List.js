@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import ListItem from '../ListItem/ListItem';
+import { getTodos } from '../../store/actions/todoActions';
 
-export default function List(props) {
+function List(props) {
+  const { list, getTodos } = props;
+
+  useEffect(() => getTodos(), [getTodos]);
+
   return (
     <ul>
-      {props.list.map(item => (
+      {list.map(item => (
         <ListItem key={item.id} {...props} {...item} />
       ))}
     </ul>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    list: state.todos.list
+  };
+};
+
+export default connect(mapStateToProps, { getTodos })(List);
