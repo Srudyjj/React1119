@@ -9,7 +9,7 @@ import './App.css';
 import List from './components/List/List';
 import TODOInput from './components/TODOInput/TODOInput';
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Provider store={store}>

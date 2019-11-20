@@ -10,7 +10,9 @@ import ListItem from '../ListItem/ListItem';
 function List(props) {
   const { list, getTodos } = props;
 
-  useEffect(() => getTodos(), [getTodos]);
+  useEffect(() => {
+    getTodos();
+  }, [getTodos]);
 
   return (
     <ul>
