@@ -18,7 +18,9 @@ function TODOInput(props) {
 
   const internalOnSubmit = e => {
     e.preventDefault();
-    addTodo(value);
+    if (value.trim()) {
+      addTodo(value);
+    }
     onChange({ target: { value: '' } });
   };
 

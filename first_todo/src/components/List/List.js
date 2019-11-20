@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { getTodos } from '../../store/actions/todoActions';
 // Components
 import ListItem from '../ListItem/ListItem';
+// Helper
+import listFilter from './listFilter';
 
 function List(props) {
   const { list, getTodos } = props;
@@ -23,9 +25,9 @@ function List(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    list: state.todos.list
+    list: listFilter(state.todos.list, ownProps.filter)
   };
 };
 
