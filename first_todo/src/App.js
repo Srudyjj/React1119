@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+// Core
+import React from 'react';
+// Redux
 import { Provider } from 'react-redux';
 import store from './store/store';
 // Styles

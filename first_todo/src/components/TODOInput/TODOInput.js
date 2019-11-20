@@ -1,11 +1,15 @@
+// Core
 import React from 'react';
+// Redux
 import { connect } from 'react-redux';
-import useInputValue from '../../hooks/useInputValue';
+// Actions
 import {
   addTodo,
   toggleEdit,
   updateTodo
 } from '../../store/actions/todoActions';
+// Hoocks
+import useInputValue from '../../hooks/useInputValue';
 
 function TODOInput(props) {
   const { currentEditItem, isEdit, addTodo, toggleEdit, updateTodo } = props;

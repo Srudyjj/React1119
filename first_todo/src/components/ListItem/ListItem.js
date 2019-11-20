@@ -1,15 +1,18 @@
+// Core
 import React from 'react';
+// Redux
 import { connect } from 'react-redux';
-import Checkbox from '../Checkobox/Checkbox';
-import RemoveButton from '../RemoveButton/RemoveButton';
-import EditButton from '../EditButton/EditButton';
-
+// Actions
 import {
   editTodo,
   removeTodo,
   toggleEdit,
   updateTodo
 } from '../../store/actions/todoActions';
+// Components
+import Checkbox from '../Checkobox/Checkbox';
+import RemoveButton from '../RemoveButton/RemoveButton';
+import EditButton from '../EditButton/EditButton';
 
 function ListItem(props) {
   const {

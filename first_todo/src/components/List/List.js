@@ -1,7 +1,11 @@
+// Core
 import React, { useEffect } from 'react';
+// Redux
 import { connect } from 'react-redux';
-import ListItem from '../ListItem/ListItem';
+// Actions
 import { getTodos } from '../../store/actions/todoActions';
+// Components
+import ListItem from '../ListItem/ListItem';
 
 function List(props) {
   const { list, getTodos } = props;
