@@ -45,7 +45,7 @@ export const editTodo = item => dispatch => {
   });
 };
 
-export const toggleTodo = isEdit => dispatch => {
+export const toggleEdit = isEdit => dispatch => {
   dispatch({
     type: TOGGLE_EDIT,
     payload: isEdit
@@ -58,6 +58,6 @@ export const removeTodo = item => async dispatch => {
   //TODO Handle error
   dispatch({
     type: REMOVE_TODO,
-    payload: id
+    payload: item
   });
 };
