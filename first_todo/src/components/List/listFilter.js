@@ -1,5 +1,7 @@
 import { ALL, DONE, IN_PROGRESS } from '../../store/actions/types';
 
+//TODO add useMemo
+
 export default function getVisibleTodos(todos, filter) {
   switch (filter) {
     case ALL:
